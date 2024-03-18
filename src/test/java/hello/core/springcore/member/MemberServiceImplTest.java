@@ -1,11 +1,17 @@
 package hello.core.springcore.member;
 
 
+import hello.core.springcore.AppConfig;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
+import static org.assertj.core.api.Assertions.*;
 
 class MemberServiceImplTest {
-    MemberService memberService = new MemberServiceImpl();
+    ApplicationContext applicationContext = new AnnotationConfigApplicationContext(AppConfig.class);
+    MemberService memberService = applicationContext.getBean("memberService", MemberService.class);
 
     @Test
     void join(){
@@ -17,6 +23,6 @@ class MemberServiceImplTest {
         Member findMember = memberService.findMember(member.getId());
 
         //then
-        Assertions.assertThat(member).isEqualTo(findMember);
+        assertThat(member).isEqualTo(findMember);
     }
 }
