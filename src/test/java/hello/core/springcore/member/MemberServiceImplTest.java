@@ -2,12 +2,11 @@ package hello.core.springcore.member;
 
 
 import hello.core.springcore.AppConfig;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 class MemberServiceImplTest {
     ApplicationContext applicationContext = new AnnotationConfigApplicationContext(AppConfig.class);
