@@ -3,19 +3,23 @@ package hello.core.springcore.order;
 import hello.core.springcore.discount.DiscountPolicy;
 import hello.core.springcore.member.Member;
 import hello.core.springcore.member.MemberRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@Component
 public class OrderServiceImpl implements OrderService {
     private final MemberRepository memberRepository;
     private final DiscountPolicy discountPolicy;
 
-    // 테스트 용도
-    public MemberRepository getMemberRepository(){
-        return memberRepository;
-    }
-
+    @Autowired
     public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy){
         this.memberRepository = memberRepository;
         this.discountPolicy = discountPolicy;
+    }
+
+    // 테스트 용도
+    public MemberRepository getMemberRepository(){
+        return memberRepository;
     }
 
     @Override
